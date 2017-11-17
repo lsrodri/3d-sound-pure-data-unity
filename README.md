@@ -1,4 +1,4 @@
-# 3D Audio Project for our Fundamentals of Virtual and Augmented Reality course
+# 3D Audio Project for Fundamentals of Virtual and Augmented Reality
 
 This project is based on Open Sound Control (OSC) for Unity 3D.
 
