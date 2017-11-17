@@ -1,0 +1,14 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TargetPos.cs">
+    <Files>
+      <File FileName="Assets/TargetPos.cs" Line="22" Column="18" />
+      <File FileName="Assets/CamControl.cs" Line="29" Column="30" />
+      <File FileName="../../Projects/3DAudioCourse/2017_October/Tutorial/Tutorial_UnityOSC-master/Assets/SendPositionOnUpdate.cs" Line="10" Column="1" NotebookId="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
