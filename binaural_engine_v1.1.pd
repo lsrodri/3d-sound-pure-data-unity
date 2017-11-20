@@ -1,4 +1,4 @@
-#N canvas 0 23 598 657 10;
+#N canvas 0 0 944 982 10;
 #X floatatom 324 501 5 0 3500 0 - - -;
 #X floatatom 254 502 5 -90 90 0 - - -;
 #X floatatom 178 502 5 0 0 0 - - -;
@@ -41,7 +41,7 @@
 #X text 233 171 set volume from OSC;
 #X text 252 288 set volume from distance;
 #X text 203 568 audio output;
-#N canvas 628 136 652 581 OSC_receiver 1;
+#N canvas 960 0 944 982 OSC_receiver 1;
 #X msg 330 173 1 \$1 \$2 \$3;
 #X obj 330 197 spray 4;
 #X obj 191 187 s trigger;
@@ -58,7 +58,7 @@
 #X msg 510 93 1;
 #X text 27 21 This patch receives OSC messages from Blender (12002@localhost)
 ;
-#X obj 191 168 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 191 168 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 381 59;
 #X obj 206 314 print;
@@ -70,6 +70,10 @@
 1;
 #X obj 74 357 route cymbalOnOff;
 #X obj 74 398 s trigg;
+#X obj 223 411 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 224 433 s triggg;
+#X obj 223 388 route sphereestAl;
 #X connect 0 0 1 0;
 #X connect 1 1 6 0;
 #X connect 1 2 7 0;
@@ -87,9 +91,12 @@
 #X connect 18 0 16 0;
 #X connect 18 0 19 0;
 #X connect 18 0 22 0;
+#X connect 18 0 26 0;
 #X connect 19 0 20 0;
 #X connect 21 0 23 0;
 #X connect 22 0 21 0;
+#X connect 24 0 25 0;
+#X connect 26 0 24 0;
 #X restore 8 -58 pd OSC_receiver;
 #X text 201 77 Load and read audio file;
 #X obj 182 134 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -102,7 +109,7 @@
 #X obj 254 466 r elev;
 #X obj 324 443 r dist;
 #X obj 324 466 * 0.01;
-#X msg 204 95 open shclkonk.wav \, 1;
+#X msg 204 95 open guitar.wav \, 1;
 #X obj 404 16 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 376 -3 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -119,13 +126,35 @@
 #X text 465 3 audio on/off;
 #X msg 467 -31 \; pd dsp \$1;
 #X obj 424 209 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 4500 1;
+-1 -1 0 1;
 #X text 434 91 Load and read audio file;
-#X obj 415 148 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
 #X text 433 146 bang when finished reading;
-#X msg 437 109 open cymbal.wav \, 1;
+#X msg 437 109 open thump.wav \, 1;
 #X obj 376 -47 r trigg;
+#X text 601 132 bang when finished reading;
+#X obj 805 16 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 777 -3 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 805 92 1;
+#X msg 777 92 0;
+#X text 823 14 Start;
+#X text 797 -5 Stop;
+#X obj 778 247 *~ 0.5;
+#X floatatom 917 222 5 0 0 0 - - -;
+#X obj 777 -27 select 0 1;
+#X obj 811 225 / 127;
+#X obj 777 126 readsf~;
+#X text 866 3 audio on/off;
+#X msg 868 -31 \; pd dsp \$1;
+#X obj 825 209 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 835 91 Load and read audio file;
+#X obj 816 148 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 834 146 bang when finished reading;
+#X obj 777 -47 r triggg;
+#X msg 838 109 open 19312.wav \, 1;
 #X connect 0 0 31 0;
 #X connect 1 0 30 2;
 #X connect 2 0 30 1;
@@ -162,17 +191,31 @@
 #X connect 50 0 32 0;
 #X connect 51 0 53 0;
 #X connect 52 0 54 0;
-#X connect 53 0 68 0;
+#X connect 53 0 67 0;
 #X connect 54 0 61 0;
 #X connect 57 0 9 0;
 #X connect 59 0 52 0;
 #X connect 59 1 51 0;
 #X connect 60 0 57 1;
 #X connect 61 0 57 0;
-#X connect 61 1 68 0;
-#X connect 61 1 66 0;
 #X connect 64 0 58 0;
 #X connect 64 0 60 0;
-#X connect 68 0 61 0;
-#X connect 69 0 59 0;
-#X connect 69 0 63 0;
+#X connect 67 0 61 0;
+#X connect 68 0 59 0;
+#X connect 68 0 63 0;
+#X connect 70 0 72 0;
+#X connect 71 0 73 0;
+#X connect 72 0 88 0;
+#X connect 73 0 80 0;
+#X connect 76 0 9 0;
+#X connect 78 0 71 0;
+#X connect 78 1 70 0;
+#X connect 79 0 76 1;
+#X connect 80 0 76 0;
+#X connect 80 1 88 0;
+#X connect 80 1 85 0;
+#X connect 83 0 77 0;
+#X connect 83 0 79 0;
+#X connect 87 0 78 0;
+#X connect 87 0 82 0;
+#X connect 88 0 80 0;
