@@ -6,16 +6,27 @@ public class myscript : MonoBehaviour {
 
 	public GameObject Target;
 	public OSC osc;
-
 	public float fallSpeed = 5.0f;
 	public float spinSpeed = 250.0f;
+	public float playerSpeed;
+
 	bool move = true;
 	float cymbal;
+	private Rigidbody rigidBody;
 
-	// Use this for initialization
-	void Start () {
-
+	void Start ()
+	{
+		rigidBody = GetComponent<Rigidbody>();
 	}
+
+	// Used to update the Rigid Body Component
+	void FixedUpdate () {
+		float moveHorizontal = Input.GetAxis ("Horizontal");
+		float moveVertical = Input.GetAxis ("Vertical");
+		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+		rigidBody.AddForce (movement * playerSpeed);
+	}
+
 
 	// Update is called once per frame
 	void Update () {
@@ -23,8 +34,6 @@ public class myscript : MonoBehaviour {
 		if (move) {
 			transform.Translate (Vector3.down * fallSpeed * Time.deltaTime, Space.World);
 			transform.Rotate (Vector3.forward, spinSpeed * Time.deltaTime);
-
-
 		}
 
 		if (Target.transform.position.y == cymbal) {
@@ -45,7 +54,6 @@ public class myscript : MonoBehaviour {
 		if (collision.gameObject.name == "Plane") {            
 			move = false;
 			cymbal = Target.transform.position.y;
-
 		}
 
 	}
